@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "exports": "./index.js",
+  "dependencies": {
+    "got": "^14.2.0"
+  }
+}
