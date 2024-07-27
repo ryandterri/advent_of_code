@@ -1,5 +1,6 @@
 import fs from 'fs'
 
+const start = new Date()
 const data = fs.readFileSync('./data/input16.txt', { encoding: 'utf-8' })
 const grid = data.split('\n').map(x => x.split(''))
 grid.pop()
@@ -122,3 +123,5 @@ traverse(0, 0, "R")
 console.log(energized.map(x => x.join('')).join('\n'))
 
 console.log(energized.map(x => x.filter(x => x === '#')).flat().length)
+
+console.log(new Date() - start)
