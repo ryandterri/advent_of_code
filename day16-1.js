@@ -110,13 +110,9 @@ const traverse = (y, x, direction) => {
           break
       }
   }
-  // }, 10)
+  // }, 1)
 
 }
-
-
-
-
 
 traverse(0, 0, "R")
 
