@@ -2,6 +2,7 @@
   "type": "module",
   "exports": "./index.js",
   "dependencies": {
+    "@datastructures-js/priority-queue": "^6.3.1",
     "got": "^14.2.0"
   }
 }

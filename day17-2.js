@@ -22,7 +22,7 @@ for (let y = 0; y < grid.length; y++) {
     const horizontal_key = get_key(x, y, 'h')
     graph[vertical_key] = { min_heat: Infinity, neighbors: {} }
     graph[horizontal_key] = { min_heat: Infinity, neighbors: {} }
-    for (let i = 1; i <= 3; i++) {
+    for (let i = 4; i <= 10; i++) {
       if (grid[y + i]) {
         let total = 0
         for (let j = 1; j <= i; j++) {
