@@ -2,6 +2,7 @@ import fs from 'fs'
 
 const data = fs.readFileSync('./data/input2.txt', { encoding: 'utf-8' })
 const presents = data.split('\n')
+
 presents.pop()
 
 let result = 0
