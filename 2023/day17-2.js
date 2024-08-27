@@ -1,6 +1,6 @@
 import fs from 'fs'
 import { MinPriorityQueue } from '@datastructures-js/priority-queue'
-
+const start = new Date()
 const node_queue = new MinPriorityQueue((node) => node.min_heat)
 
 const data = fs.readFileSync('./data/input17.txt', { encoding: 'utf-8' })
@@ -102,10 +102,16 @@ while (!node_queue.isEmpty()) {
 
 const path = []
 let key = last_horizontal_key
-while (!['0,0-v', '0,0-h'].includes(key)) {
-  path.push([key, graph[key].min_heat])
+while (graph[key]) {
+  const x = key.split(',')[0]
+  const y = key.split(',')[1][0]
+  path.push([key, graph[key].min_heat, x, y])
   key = graph[key].previous
+
 }
 
 console.log(path)
+// console.log(grid.map(x => x.join('')).join('\n'))
 console.log(Math.min(graph[last_vertical_key].min_heat, graph[last_horizontal_key].min_heat))
+
+console.log(new Date() - start)
