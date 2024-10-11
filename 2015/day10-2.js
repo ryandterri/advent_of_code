@@ -1,5 +1,5 @@
 let sequence = "1321131112";
-const times = 40;
+const times = 50;
 
 for (let x = 0; x < times; x++) {
   const matches = sequence.matchAll(/(\d)\1*/g);
