@@ -13,29 +13,19 @@ const is_abba = (string) => {
   return result
 }
 for (const line of lines) {
+  const sections = line.split(/\[|\]/g)
 
-  const hypernets = line.match(/\[([a-z]+)\]/ig)
+  const hypernets = sections.filter((e, i, a) => i % 2 === 1)
+  const supernets = sections.filter((e, i, a) => i % 2 === 0)
 
-  let valid = true
-  let sections = line.match(/([a-z]+)/ig)
-  for (const hypernet of hypernets) {
-    if (is_abba(hypernet)) {
-      valid = false
-    }
-    const stripped = hypernet.replace('[', '').replace(']', '')
-    const index = sections.indexOf(stripped)
-    if (index >= 0) {
-      sections.splice(index, 1)
-    }
+  let valid = hypernets.every(x => !is_abba(x))
+
+  if (valid) {
+    valid = supernets.some(x => is_abba(x))
   }
 
   if (valid) {
-    for (const section of sections) {
-      if (is_abba(section)) {
-        count++
-        break
-      }
-    }
+    count++
   }
 
 }

@@ -12,24 +12,15 @@ const is_aba = (string) => {
   return string.matchAll(aba_regex)
 }
 for (const line of lines) {
+  const sections = line.split(/\[|\]/g)
 
-  const sections = line.match(/([a-z]+)/ig)
-  const hypernets = line
-    .match(/\[([a-z]+)\]/ig)
-    .map(x => {
-      return x.replace('[', '').replace(']', '')
-    })
+  const hypernets = sections.filter((e, i, a) => i % 2 === 1)
+  const supernets = sections.filter((e, i, a) => i % 2 === 0)
 
-  for (const hypernet of hypernets) {
-    const index = sections.indexOf(hypernet)
-    if (index >= 0) {
-      sections.splice(index, 1)
-    }
-  }
 
   const babs = []
-  for (const section of sections) {
-    const aba_matches = is_aba(section)
+  for (const supernet of supernets) {
+    const aba_matches = is_aba(supernet)
     for (const aba of aba_matches) {
       const [x, y, first, second] = aba
       babs.push(`${second}${first}${second}`)
